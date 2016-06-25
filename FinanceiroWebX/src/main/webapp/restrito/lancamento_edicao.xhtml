@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+	<h:form id="edicao">
+		<h:messages warnClass="warn" 
+					infoClass="info"
+					errorClass="error"
+					fatalClass="fatal" /> 
+		<h:inputHidden value="#{lancamentoBean.editado.codigo}" />
+
+		<h:panelGrid columns="5">
+			<h:outputLabel value="Data" for="data" />
+			<h:outputLabel value="Categoria" for="categoria" />
+			<h:outputLabel value="Descrição" for="descricao" />
+			<h:outputLabel value="Valor" for="valor" />
+			<h:outputLabel value="Cheque" for="numeroCheque" />
+						
+			<p:calendar id="data" value="#{lancamentoBean.editado.data}" navigator="true" showOn="button"/>
+						
+			<h:selectOneMenu id="categoria" value="#{lancamentoBean.editado.categoria}">
+				<f:selectItems value="#{categoriaBean.categoriasSelect}" />
+			</h:selectOneMenu>
+
+			<h:inputText id="descricao"	value="#{lancamentoBean.editado.descricao}"	required="true" size="25" />
+									
+			<h:inputText id="valor" value="#{lancamentoBean.editado.valor}"	size="10">
+				<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+			</h:inputText>
+			
+			<h:inputText value="#{lancamentoBean.numeroCheque}" id="numeroCheque" maxlength="6" size="6" />
+			
+		</h:panelGrid>
+		<p:commandButton value="Novo" action="#{lancamentoBean.novo}" process="@this" update="edicao"/>
+		<p:commandButton value="Salvar" action="#{lancamentoBean.salvar}" update="listagem, edicao"/>
+	</h:form>
+</ui:composition>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+ <display-name>Archetype Created Web Application</display-name>
+ <context-param>
+  <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <!-- Inicio de configurações para Java Server Faces 
+ Use Documents Saved as *.xhtml Servidor vai entender que requisições 
+		JSF serão referentes a arquivos XHTML -->
+ <context-param>
+  <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+  <param-value>.xhtml</param-value>
+ </context-param>
+ <!-- Configurações para exibição de mensagens no console do servidor, podendo 
+		ser: - Development - Production - UnitTest - SystemTest - Extension -->
+ <context-param>
+  <param-name>javax.faces.PROJECT_STAGE</param-name>
+  <param-value>Development</param-value>
+ </context-param>
+ <!-- Definição do Servlet que irá interceptar todas as requisições JSF e 
+		direcionar para o seu componente (ManagedBean) -->
+ <servlet>
+  <servlet-name>FacesServlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <!-- Faces Servlet Mapping -->
+ <servlet-mapping>
+  <servlet-name>FacesServlet</servlet-name>
+  <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping>
+ <!-- Definição de tempo para a sessão em MINUTOS -->
+ <session-config>
+  <session-timeout>7</session-timeout>
+ </session-config>
+ <!-- Definição da página inicial -->
+ <welcome-file-list>
+  <welcome-file>publico/login.jsf</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/publico/page404.jsf</location>
+ </error-page>
+</web-app>

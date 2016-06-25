@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+ <ui:composition template="/templates/interna.xhtml">
+ 	<ui:define name="titulo">Foto do Usuário</ui:define>
+ 	<ui:define name="corpo">
+
+		<h:form id="edicao">  
+			<h:messages id="messages"
+				warnClass="warn"
+				infoClass="info"
+				errorClass="error"
+				fatalClass="fatal" />
+				
+		    <h:panelGrid columns="3" cellpadding="5">
+		        <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" >
+		        </p:photoCam>
+		        <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
+		        <p:outputPanel id="photo" >
+		            <p:graphicImage id="imgPhoto" name="imagens/photoCam/#{photoCamView.filename}.jpeg"/>
+		        </p:outputPanel>
+		    </h:panelGrid>
+			<h:commandButton value="Salvar" action="#{photoCamView.salvar}">
+				<f:ajax execute="@form" />
+			</h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

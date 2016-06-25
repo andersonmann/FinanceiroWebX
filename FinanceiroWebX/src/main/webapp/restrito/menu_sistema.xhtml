@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" >
+
+<ui:composition>
+	<h:panelGroup rendered="#{contextoBean.hasRole('ROLE_USUARIO')}">
+		<h:form id="menu">
+			<table width="100%">
+			<tr>
+				<td width="93%">
+					<h:commandButton value="Contas" action="/restrito/conta"/>
+					<h:selectOneMenu value="#{contextoBean.contaAtiva.codigo}"
+						valueChangeListener="#{contextoBean.setContaAtiva}" 
+						rendered="#{!empty contextoBean}"
+						onchange="submit()">
+						<f:selectItems 	value="#{contaBean.lista}" 
+										var="conta"
+										itemValue="#{conta.codigo}"
+										itemLabel="#{conta.descricao}"/>
+					</h:selectOneMenu>	
+					<h:commandButton value="Categorias" action="/restrito/categoria"/>
+					<h:commandButton value="Landscapes" action="/restrito/landscapes"/>
+					<h:commandButton value="Lancamentos" action="/restrito/lancamento"/>
+					<h:commandButton value="Photo" action="/restrito/photo"/>
+					<h:commandButton value="Cheque" action="/restrito/cheque"/>
+				</td>
+				<td align="left">
+					<h:panelGroup rendered="#{contextoBean.hasRole('ROLE_ADMINISTRADOR')}">
+						<h:commandLink action="/admin/usuarioAdm" title="Administrativo">
+							<h:graphicImage library="imagens" name="administrativo16.png" />
+						</h:commandLink>
+					</h:panelGroup>
+					<h:commandLink action="/restrito/principal" title="Principal">
+						<h:graphicImage library="imagens" name="principal16.png" />
+					</h:commandLink>
+					<h:commandLink action="#{loginBean.logout}" title="Sair">
+						<h:graphicImage library="imagens" name="logout16.png" />
+					</h:commandLink>
+				</td>
+			</tr>
+			</table>
+		</h:form>
+	</h:panelGroup>
+</ui:composition>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
