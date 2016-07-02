@@ -1,0 +1,18 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+  <ui:composition template="/templates/interna.xhtml">
+  	 <ui:define name="titulo">Relatorio de Contas</ui:define>
+	 <ui:define name="corpo">
+		<h:form id="impressao">
+			<object type="application/pdf"  data="#{request.contextPath}/resources/reports/#{contaBean.fileName}" height="300px" width="100%">
+	            Your browser can't display pdf, <a href="#{request.contextPath}/resources/reports/#{contaBean.fileName}">click</a> to download pdf instead.
+	        </object>
+			<h:commandButton value="Voltar" action="conta"/>
+		</h:form>
+  	 </ui:define>
+  </ui:composition>
+</html>

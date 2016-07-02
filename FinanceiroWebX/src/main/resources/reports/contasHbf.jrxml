@@ -20,15 +20,21 @@ FROM
 WHERE
      conta.`cod_usuario`  = $P{codUsuario}]]>
 	</queryString>
-	<field name="codigo" class="java.lang.Integer"/>
-	<field name="dtCreated" class="java.sql.Timestamp">
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[codigo]]></fieldDescription>
 	</field>
-	<field name="descricao" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[descricao]]></fieldDescription>
+	</field>
+	<field name="dtCreated" class="java.util.Date">
+		<fieldDescription><![CDATA[dtCreated]]></fieldDescription>
+	</field>
 	<field name="favorita" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[]]></fieldDescription>
+		<fieldDescription><![CDATA[favorita]]></fieldDescription>
 	</field>
-	<field name="saldoInicial" class="java.lang.Float"/>
+	<field name="saldoInicial" class="java.lang.Float">
+		<fieldDescription><![CDATA[saldoInicial]]></fieldDescription>
+	</field>
 	<variable name="smSaldo" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{saldoInicial}]]></variableExpression>
 	</variable>

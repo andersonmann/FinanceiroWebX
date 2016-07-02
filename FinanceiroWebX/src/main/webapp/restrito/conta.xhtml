@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
  <ui:composition template="/templates/interna.xhtml">
  	<ui:define name="titulo">Cadastro de contas</ui:define>
@@ -84,7 +85,32 @@
 				</h:column>
 			</h:dataTable>
 		</h:form>
-	
+		
+		<h:panelGrid columns="5">
+			<h:form id="impressao">
+	 		
+				<h:commandLink action="#{contaBean.geraPDF}">
+					<h:graphicImage library="imagens" name="pdf.png"
+					 title="Visualizar PDF" />
+				</h:commandLink>
+				
+				<h:commandLink >
+					<p:fileDownload value="#{contaBean.arquivoRetorno}" />
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="1" />
+					<h:graphicImage library="imagens" name="pdf.png"
+						title="Download PDF" />
+				</h:commandLink>
+				<h:commandLink >
+					<p:fileDownload value="#{contaBean.arquivoRetornoLista}" />
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="1" />
+					<h:graphicImage library="imagens" name="pdf.png"
+						title="Download Lista PDF" />
+				</h:commandLink>
+			</h:form>
+		</h:panelGrid>
+		
 	</ui:define>
 	</ui:composition>
 </html>
